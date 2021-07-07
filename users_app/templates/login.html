@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %}
+    <title>Register - Taskmate</title>
+{% endblock title %}
+
+{% block content %}
+  <div class="container ">
+    <br> 
+        <h2>Login On TaskMate</h2>
+        {% if messages%}
+            {% for message in messages %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    {{message}}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                    </button>
+                </div>
+                    
+            {% endfor %}
+        {% endif %}
+
+                <div class="row">
+                <div class="col-8">
+                    <form method ="post" class="mt-5">
+                    {% csrf_token %}
+                        {{ form|crispy }}
+                    <button type="submit" class="btn btn-primary mt-3 mb-5">Login</button>
+                    </form>
+                </div>
+                <div class="col-4">
+                <br>
+                <img src={% static 'images/joanna (1).jpg' %} alt="none" class="mt-5" width ='460' height ='250'>
+                 </div>
+            </div>
+{% endblock content %}
